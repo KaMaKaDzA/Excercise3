@@ -11,7 +11,7 @@ public class Trader{
     private String good = "";
     private int goodCount = 0;
 
-    Trader(String name, double Money){
+    Trader(String name, double money){
         this.name = name;
         this.money = money;
     }
@@ -53,7 +53,8 @@ public class Trader{
             if (currentTown.getGoods().get(i).getName().equals(compareRezult[1])){
                 good=currentTown.getGoods().get(i).getName();
                 goodCount = howMuchIcanBuy(currentTown.getGoods().get(i).getPrice());
-                System.out.println("Bought "+goodCount+" "+good+"\n");
+                money=money-currentTown.getGoods().get(i).getPrice()*goodCount;
+                System.out.println("Bought "+goodCount+" "+good+". "+money+" coins left."+"\n");
                 break;
             }
             return compareRezult[0];
@@ -88,6 +89,7 @@ public class Trader{
 
     public void sell(Town currentTown){
         money=money+currentTown.getGoodsByName(good).getPrice()*goodCount;
+        System.out.println("Sell "+good);
         good="";
         goodCount=0;
     }

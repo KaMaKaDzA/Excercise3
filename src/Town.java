@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Town {
     private String name;
-    private ArrayList<Goods> goods = new ArrayList<Goods>();
+    private ArrayList<Goods> goods;
 
     public String getName(){
         return name;
@@ -26,7 +28,8 @@ public class Town {
     }
 
     Town(ArrayList<Goods> goods, String name){
-        this.goods=(ArrayList<Goods>) goods.clone();
+        this.goods = new ArrayList<Goods>(goods);
+        this.name = name;
     }
 
     Town(){}
